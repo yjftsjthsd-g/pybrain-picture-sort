@@ -52,3 +52,11 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# Sample images
+*.jpg
+*.jpeg
+*.png
+*.gif
+samples/goats
+samples/whales
