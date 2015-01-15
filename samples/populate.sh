@@ -22,6 +22,6 @@ curl https://upload.wikimedia.org/wikipedia/commons/e/ef/Wading-pool.jpg > ./wha
 
 
 curl https://upload.wikimedia.org/wikipedia/commons/5/5d/Kitty_3.jpg > ./unknown/cat.jpg
-curl https://upload.wikimedia.org/wikipedia/commons/f/f3/Baleine_%C3%A0_bosse_et_son_baleineau_-_Humpback_Whale_%26_calf_%28RENO%29.jpg > ./unknown/whale.jpg
+curl http://www.photolib.noaa.gov/bigs/anim0833.jpg > ./unknown/whale.jpg
 
 #note: yes, some of these are in parallel and some are in sequence. I don't like waiting, but if I do them all in parallel, then the script apparenly can finish before curl and the terminal gets messy. So yes, this is an ugly hack of a fix
