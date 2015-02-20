@@ -17,6 +17,7 @@ from multiprocessing import Process, Pipe
 import shutil
 
 def avgColor(myImage, minX, minY, maxX, maxY, pixelArray=None):
+	"avgColor returns the average color from a section of a picture"
 	if pixelArray==None:
 		pixelArray = myImage.load()
 	cumulativeCounts = [0, 0, 0]
@@ -31,6 +32,8 @@ def avgColor(myImage, minX, minY, maxX, maxY, pixelArray=None):
 	return [cumulativeCounts[0]/pixelsCounted, cumulativeCounts[1]/pixelsCounted, cumulativeCounts[2]/pixelsCounted]
 
 def twelveToneParallel(myImage):
+	"""twelveToneParallel returns the average colors of the four quadrants of an image, as concatenated RGB color values (hence 12 tones)
+	The difference from twelveTone is that it uses the multiprocessing module to run all four quadrants in parallel"""
 	pa=myImage.load()
 	def getAvgColor(conn, myImage, minX, minY, maxX, maxY,pa):
 		conn.send(avgColor(myImage, minX, minY, maxX, maxY, pixelArray=pa))
@@ -73,6 +76,7 @@ def twelveToneParallel(myImage):
 			]
 
 def twelveTone(myImage):
+	"twelveTone returns the average colors of the four quadrants of an image, as concatenated RGB color values (hence 12 tones)"
 	a = avgColor(myImage, 0, 0, myImage.size[0]/2, myImage.size[1]/2)
 	b = avgColor(myImage, myImage.size[0]/2, 0, myImage.size[0], myImage.size[1]/2)
 	c =  avgColor(myImage, 0, myImage.size[1]/2, myImage.size[0]/2, myImage.size[1])
@@ -86,6 +90,7 @@ def twelveTone(myImage):
 
 
 def addSampleImageFromFile(dataset, imageFile, groupId):
+	"adds a data sample from an image file, including needed processing"
 	myImage = Image.open(imageFile)
 	dataset.addSample(twelveToneParallel(myImage), (groupId,))
 
