@@ -90,9 +90,8 @@ def twelveTone(myImage):
 
 
 class Brain:
-	def __init__(self):
+	def __init__(self, hiddenNodes = 30):
 		# construct neural network 
-		hiddenNodes = 30
 		self.myClassifierNet = buildNetwork(12, hiddenNodes, 1, bias=True, hiddenclass=TanhLayer) #parameters to buildNetwork are inputs, hidden, output
 		# set up dataset
 		self.myDataset = SupervisedDataSet(12, 1)
@@ -111,6 +110,11 @@ class Brain:
 	def save(self, saveFileName="recognizernet.brain"):
 		saveFile = open(saveFileName, 'w')
 		pickle.dump(self.myClassifierNet, saveFile)
+		saveFile.close()
+
+	def load(self, saveFileName="recognizernet.brain"):
+		saveFile = open(saveFileName, 'r')
+		myClassifierNet = pickle.load(saveFile)
 		saveFile.close()
 
 	def classify(self, fileName):
