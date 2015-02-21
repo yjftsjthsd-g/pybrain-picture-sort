@@ -32,9 +32,8 @@ recognizer_cli.py goats whales unknown probablyGoats probablyWhales
 and end up with the contents of unknown/ moved into probablyGoats and probablyWhales as is appropriate. The cat will probably end up with the goats, since the neural network will always say that an image is closer to one category or the other.
 
 ## read-only verson
-NOTE! This is temporarily removed during refactoring because once I've split things apart I'm hoping to make the read-only version a lot simpler
 
-The main program here is recognizer.py, but I've also written a stripped-down version that doesn't train a neural network, but instead loads one from a file (recognizernet.brain by default); this is an automatically-generated dump of the last neural network generated and trained by recognizer.py. In this way, one may train a network, then use it later to classify images without having to rebuild the network again. This internally uses python's pickle functionality.
+The main program here is `recognizer_cli.py`, but I've also written a stripped-down version that doesn't train a neural network, but instead loads one from a file (recognizernet.brain by default); this is an automatically-generated dump of the last neural network generated and trained by recognizer.py. In this way, one may train a network, then use it later to classify images without having to rebuild the network again. This internally uses python's pickle functionality.
 To use this read-only version on the above example, one would run
 
 ```
