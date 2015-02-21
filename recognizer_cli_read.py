@@ -24,10 +24,9 @@ for f in os.listdir(argv[1]):
 	if brain.classify(os.path.join(argv[1], f)) == 0:
 		sys.stdout.write(" is a member of group ")
 		print(os.path.join(argv[2]))
-		#shutil.move(os.path.join(argv[1], f), argv[2])
+		shutil.move(os.path.join(argv[1], f), argv[2])
 	else:
 		sys.stdout.write(" is a member of group ")
 		print(os.path.join(argv[3]))
-		#shutil.move(os.path.join(argv[1], f), argv[3])
-		#TODO reenable actually moving once we're sure it works
+		shutil.move(os.path.join(argv[1], f), argv[3])
 
