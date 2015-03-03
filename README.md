@@ -1,4 +1,4 @@
-# ballin-octo-cyril
+# picture-sort
 Image classification with pybrain
 by Brian Cole
 
